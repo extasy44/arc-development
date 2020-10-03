@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
@@ -118,6 +119,17 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+const useScrollToTop = () => {
+  let location = useLocation();
+  useEffect(() => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }, [location]);
+};
+
 const Header = ({ value, setValue, selectedIndex, setSelectedIndex }) => {
   const classes = useStyles();
   const theme = useTheme();
@@ -128,6 +140,8 @@ const Header = ({ value, setValue, selectedIndex, setSelectedIndex }) => {
 
   const [anchorEl, setAnchorEl] = useState(null);
   const [openMenu, setOpenMenu] = useState(false);
+
+  useScrollToTop();
 
   const handleChange = (e, value) => {
     setValue(value);
