@@ -158,7 +158,7 @@ const Header = ({ value, setValue, selectedIndex, setSelectedIndex }) => {
       selectedIndex: 1
     },
     {
-      name: 'Mobile App Development',
+      name: 'iOS/Android App Development',
       link: '/mobileapps',
       activeIndex: 1,
       selectedIndex: 2
@@ -197,7 +197,9 @@ const Header = ({ value, setValue, selectedIndex, setSelectedIndex }) => {
             }
           }
           break;
-
+        case '/estimate':
+          setValue(false);
+          break;
         default:
           break;
       }
@@ -224,7 +226,14 @@ const Header = ({ value, setValue, selectedIndex, setSelectedIndex }) => {
           />
         ))}
       </Tabs>
-      <Button variant="contained" color="secondary" className={classes.button}>
+      <Button
+        variant="contained"
+        component={Link}
+        to="/estimate"
+        color="secondary"
+        onClick={() => setValue(false)}
+        className={classes.button}
+      >
         Free Estimate
       </Button>
       <Menu
