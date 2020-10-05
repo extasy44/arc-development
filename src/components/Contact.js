@@ -140,17 +140,14 @@ export default function Contact(props) {
     setLoading(true);
 
     axios
-      .get(
-        'https://us-central1-material-ui-course.cloudfunctions.net/sendMail',
-        {
-          params: {
-            email: email,
-            name: name,
-            phone: phone,
-            message: message
-          }
+      .get('https://us-central1-crown-db-f1642.cloudfunctions.net/sendMail', {
+        params: {
+          email: email,
+          name: name,
+          phone: phone,
+          message: message
         }
-      )
+      })
       .then((res) => {
         setLoading(false);
         setOpen(false);
